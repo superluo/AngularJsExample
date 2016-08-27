@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <p>
+        Select:
+    </p>
+    <select ng-model="selectPerson">
+        <option ng-repeat="x in persons" value="{{x.userName}}">{{x.age}}</option>
+    </select>
+    <p>
+        Name:{{selectPerson}}
+    </p>
+    <h2>Another method</h2>
+    <select ng-model="selectedUser" ng-options=" x for (x,y) in users"></select>
+    <p>
+        Name:{{selectedUser.userName}}
+    </p>
+</div>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope, $http) {
+        $http.get("start").success(function (response) {
+            $scope.persons = response;
+        });
+        $http.get("start?type=1").success(function (response) {
+            $scope.users = response;
+        });
+    });
+</script>
+</body>
+</html>

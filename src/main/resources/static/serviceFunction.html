@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>serviceFunction</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <h2>Custom Service:{{hex}}</h2>
+</div>
+<script type="text/javascript">
+    var ahluoAppService = angular.module('ahluoApp', []);
+    ahluoAppService.service('hexService', function () {
+        this.hexFunction = function (x) {
+            return x.toString(16);
+        }
+    });
+    ahluoAppService.controller('ahluoController', function ($scope, hexService) {
+        $scope.hex = hexService.hexFunction(255);
+    });
+</script>
+</body>
+</html>

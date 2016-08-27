@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ServiceInterval</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <h1>Current Time:{{currentTime}}</h1>
+</div>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope, $interval) {
+        $scope.currentTime = new Date().toLocaleTimeString();
+        $interval(function () {
+            $scope.currentTime = new Date().toLocaleTimeString();
+        }, 1000);
+    });
+
+</script>
+</body>
+</html>
