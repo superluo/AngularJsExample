@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <h1>{{title}}</h1>
+    <ul>
+        <li ng-repeat="x in infos">{{x}}{{title}}</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope, $rootScope) {
+        $scope.infos = ["centos", "unix", "linux"];
+        $rootScope.title = "Server";
+    });
+</script>
+</body>
+</html>

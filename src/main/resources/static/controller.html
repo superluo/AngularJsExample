@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController" ng-init="name='centos';age=101">
+    Name:<input type="text" ng-model="name"><br>
+    age:<input type="text" ng-model="age"><br>
+    <br>
+    Info:{{info()}}
+    <br>
+    <br>
+    <ul>
+        <li ng-repeat="x in persons|orderBy:'age'">{{"name="+x.name+",age="+x.age}}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope) {
+        $scope.info = function () {
+            return "name=" + $scope.name + ",age=" + $scope.age;
+        }
+    });
+</script>
+<script type="text/javascript" src="/js/controller/controller.js"></script>
+</body>
+</html>

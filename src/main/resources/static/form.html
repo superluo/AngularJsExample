@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+    <style>
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+
+        input.ng-valid {
+            background-color: greenyellow;
+        }
+
+        input.ng-empty {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+<form ng-app="" name="ahluoForm" ng-init="ahluoEmail='test@cc.com'">
+    Email:<input type="email" name="emailAddress" ng-model="ahluoEmail">
+    <span ng-show="ahluoForm.emailAddress.$error.email">illegal email address</span>
+    <h1>状态</h1>
+    {{ahluoForm.emailAddress.$valid}}
+    {{ahluoForm.emailAddress.$dirty}}
+    {{ahluoForm.emailAddress.$touched}}
+</form>
+</body>
+</html>

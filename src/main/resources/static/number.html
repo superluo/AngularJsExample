@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluo-number" ng-init="count=10;sale=10.2;person={firstName:'Ahluo',lastName:'Life'};arrays=['good','job']">
+    1.TotalSale:{{count*sale}}<br/>
+    2.TotalSale:<span ng-bind="count*sale"></span>
+    <br/>
+    <pre>
+person={firstName:'Ahluo',lastName:'Life'}
+    </pre>
+    <h6>PersonName:{{person.firstName}}<span ng-bind="person.lastName"></span></h6>
+    <pre>
+arrays=['good','job']
+    </pre>
+    <h6>Array:{{arrays[0]}}<span ng-bind="arrays[1]"></span></h6>
+    <br/>
+    <ahluo-Directive></ahluo-Directive>
+    <ahluo-Directive></ahluo-Directive>
+    <ahluo-Directive></ahluo-Directive>
+    <script type="text/javascript">
+        var ahluoRepeatApp = angular.module('ahluo-number', []);
+        ahluoRepeatApp.directive('ahluoDirective', function () {
+            return {template: "<h2 color='red'>Import Thing!</h2>"};
+        });
+    </script>
+</div>
+</body>
+</html>
