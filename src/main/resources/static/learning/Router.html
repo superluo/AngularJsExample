@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router</title>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script type="text/javascript">
+        angular.module('ahluoApp', ['ngRoute'])
+                .controller('HomeController', function ($scope, $route) {
+                    $scope.$route = $route;
+                })
+                .controller('AboutController', function ($scope, $route) {
+                    $scope.$route = $route;
+                })
+                .config(function ($routeProvider) {
+                    $routeProvider
+                            .when('/bd', {
+                                templateUrl: '//www.baidu.com',
+                                controller: 'HomeController'
+                            })
+                            .when('/sina', {
+                                templateUrl: '//www.sina.com',
+                                controller: 'AboutController'
+                            })
+                            .otherwise({
+                                redirectTo: '/index.html'
+                            })
+                });
+    </script>
+</head>
+<body ng-app="ahluoApp" class="ng-scope">
+<script type="text/ng-template" id="//www.baidu.com">
+    <h1>Home</h1>
+</script>
+
+<script type="text/ng-template" id="//www.sina.com">
+    <h1>About</h1>
+</script>
+<div>
+    <div id="navigation">
+        <a href="#/bd">Home</a>
+        <a href="#/sina">About</a>
+    </div>
+    <div ng-view="">ng view</div>
+</div>
+</body>
+</html>
