@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body ng-app="ahluoApp" ng-controller="ahluoController">
+<div class="container">
+    <h3>Users</h3>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Edit</th>
+            <th>UserName</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in users">
+            <td>
+                <button class="btn" ng-click="editUser(x.id)">
+                    <span class="glyphicon glyphicon-pencil"></span>Edit
+                </button>
+            </td>
+            <td>{{x.userName}}</td>
+            <td>{{x.age}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <button class="btn btn-success" ng-click="editUser('new')">
+        <span class="glyphicon glyphicon-user"></span>CreateUser
+    </button>
+    <hr>
+    <h3 ng-show="edit">CreateUser</h3>
+    <h3 ng-hide="edit">EditUser</h3>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">UserName:</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="userName" ng-disabled="!edit" placeholder="UserName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Age:</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="age"   placeholder="Age">
+            </div>
+        </div>
+    </form>
+    <hr>
+    <button class="btn btn-success" ng-disabled="error||incomplete">
+        <span class="glyphicon glyphicon-save"></span>Modify
+    </button>
+</div>
+<script type="text/javascript" src="/js/users/ahluoUsers.js"></script>
+</body>
+</html>

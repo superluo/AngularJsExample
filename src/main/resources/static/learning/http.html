@@ -17,7 +17,7 @@
 <script type="text/javascript">
     var ahluoApp = angular.module('ahluoApp', []);
     ahluoApp.controller('ahluoController', function ($scope, $http) {
-        $http.get("start").success(function (response) {
+        $http.get("/start").success(function (response) {
             $scope.ahluoUsers = response;
         });
     });

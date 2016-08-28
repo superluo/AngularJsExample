@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormValidate</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<h2>Form Validate</h2>
+<form ng-app="ahluoApp" ng-controller="ahluoController" name="ahluoForm" novalidate>
+    <p>
+        UserName:<br>
+        <input type="text" name="userName" ng-model="user.userName" required/>
+        <span style="color: red" ng-show="ahluoForm.userName.$dirty && ahluoForm.userName.$invalid">
+            <span ng-show="ahluoForm.userName.$error.required">user name is must</span>
+        </span>
+    </p>
+    <p>
+        Email:<br>
+        <input type="text" name="email" ng-model="user.email" required/>
+        <span style="color: red" ng-show="ahluoForm.email.$dirty && ahluoForm.email.$invalid">
+            <span ng-show="ahluoForm.email.$error.required">email is must.</span>
+            <span ng-show="ahluoForm.email.$error.invalid">email is invalid</span>
+        </span>
+    </p>
+    <p>
+        <input type="submit" ng-disabled="ahluoForm.userName.$dirty && ahluoForm.userName.$invalid||
+        ahluoForm.email.$dirty && ahluoForm.email.$invalid">
+    </p>
+</form>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope) {
+        $scope.user = {
+            userName: 'centos',
+            email: 'test@12.com'
+        };
+    });
+</script>
+</body>
+</html>

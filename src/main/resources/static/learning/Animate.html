@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animate</title>
+    <style>
+        div {
+            transition: all linear 0.5s;
+            background-color: lightblue;
+            height: 100px;
+        }
+        .ng-hide {
+            height: 0;
+        }
+    </style>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-animate.min.js"></script>
+</head>
+<body ng-app="ahluoApp">
+<h1>show/hide(ERROR Result with Chrome):<input type="checkbox" ng-model="ahluoCheck"></h1>
+<div ng-hide="ahluoCheck"></div>
+<script>
+    var ahluoApp = angular.module('ahluoApp', ['ngAnimate']);
+</script>
+</body>
+</html>

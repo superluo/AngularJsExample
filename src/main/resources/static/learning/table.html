@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #c4f1f1;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-Controller="ahluoController">
+    <table>
+        <tr ng-repeat="x in users|orderBy: 'age'">
+            <td>{{$index+1}}</td>
+            <td>{{x.userName}}</td>
+            <td>{{x.age|uppercase}}</td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope, $http) {
+        $http.get("/start").success(function (response) {
+            $scope.users = response;
+        });
+    });
+</script>
+</body>
+</html>

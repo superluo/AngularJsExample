@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DI</title>
+</head>
+<body>
+<h2>AngularJs Sample Application(DI)</h2>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <p>number:<input type="number" ng-model="number"/></p>
+    <button ng-click="square()">X<sup>2</sup></button>
+    <p>Result:{{result}}</p>
+</div>
+<script src="/js/angular.min.js"></script>
+<script>
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.config(function ($provide) {
+        $provide.provider('ahluoFactory', function () {
+            this.$get = function () {
+                var factory = {};
+                factory.multiply = function (a, b) {
+                    return a * b;
+                }
+                return factory;
+            }
+        });
+    });
+    ahluoApp.value('ahluoValue', 10);
+    ahluoApp.factory('ahluoFactory', function () {
+        var factory = {};
+        factory.multiply = function (a, b) {
+            return a * b;
+        }
+        return factory;
+    });
+    ahluoApp.service('ahluoService', function (ahluoFactory) {
+        this.square = function (a) {
+            return ahluoFactory.multiply(a, a);
+        }
+    });
+
+    ahluoApp.controller('ahluoController', function ($scope, ahluoService, ahluoValue) {
+        $scope.number = ahluoValue;
+        $scope.result = ahluoService.square($scope.number);
+        $scope.square = function () {
+            $scope.result = ahluoService.square($scope.number);
+        }
+    });
+
+</script>
+</body>
+</html>
