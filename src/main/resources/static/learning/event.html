@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="ahluoApp" ng-controller="ahluoController">
+    <button ng-click="count=count+1">Click</button>
+    <p>
+        {{count}}
+    </p>
+    <button ng-click="toggle()">show/hide</button>
+    <p ng-show="ahluoShow">
+        UserName:<input type="text" ng-model="person.userName"><br>
+        Age:<input type="text" ng-model="person.age"><br>
+        userInfo:{{person.userName+''+person.age}}
+    </p>
+</div>
+<script type="text/javascript">
+    var ahluoApp = angular.module('ahluoApp', []);
+    ahluoApp.controller('ahluoController', function ($scope) {
+        $scope.count = 0;
+        $scope.person = {
+            userName: 'centos',
+            age: 101
+        };
+        $scope.toggle = function () {
+            $scope.ahluoShow = !$scope.ahluoShow;
+        }
+    })
+</script>
+</body>
+</html>
